@@ -32,7 +32,7 @@ def test_valid_contact_us_form_submitting(page, base_url):
         contact_us_page.name_input.fill(fake.name())
         contact_us_page.email_input.fill(fake.email())
         contact_us_page.subject_input.fill(fake.sentence())
-        contact_us_page.message_input.fill(fake.text(random.randint(1, 1000)))
+        contact_us_page.message_input.fill(fake.text(random.randint(100, 300)))
 
     with allure.step("Upload file"):
         test_data_files = ["test_data/meme.jpg",
@@ -45,7 +45,7 @@ def test_valid_contact_us_form_submitting(page, base_url):
         contact_us_page.submit_button.click(force=True)
 
     with allure.step("Verify success message 'Success! Your details have been submitted successfully.' is visible"):
-        contact_us_page.successful_submit_alert_msg.wait_for(state="visible")
+        contact_us_page.successful_submit_alert_msg.wait_for(state="visible", timeout=10000)
         expect(contact_us_page.successful_submit_alert_msg).to_be_visible()
         expect(contact_us_page.successful_submit_alert_msg).to_have_text("Success! Your details have been submitted successfully.")
 

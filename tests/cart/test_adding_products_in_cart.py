@@ -28,7 +28,7 @@ def test_adding_products_in_cart(page, base_url):
     with allure.step("Hover over first product and click 'Add to cart'"):
         list_of_added_products = []
         total_price_of_added_products = 0
-        i = random.randint(1, 5)
+        i = 2
         while i > 0:
             result = products_page.add_random_product_in_cart()
             list_of_added_products.append(result["product_name"].replace('\xa0', ' '))

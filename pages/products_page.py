@@ -19,6 +19,7 @@ class ProductsPage(BasePage):
         name = product.locator("p").first.inner_text()
         product.hover()
         product.locator(".add-to-cart").first.click()
+        self.continue_shopping_btn.wait_for(state="visible", timeout=10000)
         self.continue_shopping_btn.click()
         return {"product_price": price, "product_name": name}
 

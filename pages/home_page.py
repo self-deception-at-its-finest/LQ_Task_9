@@ -13,7 +13,7 @@ class HomePage(BasePage):
         self.practice_website_label = page.get_by_role("heading", name="Full-Fledged practice website")
 
     def verify_home_page_visible(self):
-        expect(self.page).to_have_title("Automation Exercise")
+        expect(self.page).to_have_title("Automation Exercise", timeout=10000)
         expect(self.header_component.header).to_be_visible()
         expect(self.slider).to_be_visible()
 

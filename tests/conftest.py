@@ -14,5 +14,13 @@ def accept_cookies(page):
 
 @pytest.fixture(scope="session")
 def base_url(request):
-    """Фикстура для получения base_url"""
     return request.config.getoption("--base-url")
+
+@pytest.fixture
+def page(browser):
+    context = browser.new_context()
+    page = context.new_page()
+    page.set_default_timeout(10000)
+    page.set_default_navigation_timeout(15000)
+    yield page
+    context.close()

@@ -45,6 +45,7 @@ def test_valid_contact_us_form_submitting(page, base_url):
         contact_us_page.submit_button.click(force=True)
 
     with allure.step("Verify success message 'Success! Your details have been submitted successfully.' is visible"):
+        page.wait_for_selector(contact_us_page.successful_submit_alert_msg)
         expect(contact_us_page.successful_submit_alert_msg).to_be_visible()
         expect(contact_us_page.successful_submit_alert_msg).to_have_text("Success! Your details have been submitted successfully.")
 

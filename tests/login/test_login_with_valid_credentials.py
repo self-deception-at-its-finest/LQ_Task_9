@@ -5,7 +5,7 @@ from pages.login_page import LoginPage
 import  allure
 import os
 import pytest
-from dotenv import load_dotenv
+
 
 @pytest.mark.smoke
 def test_login_with_valid_credentials(page, base_url):

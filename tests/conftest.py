@@ -16,11 +16,8 @@ def accept_cookies(page):
 def base_url(request):
     return request.config.getoption("--base-url")
 
-@pytest.fixture
-def page(browser):
-    context = browser.new_context()
-    page = context.new_page()
+@pytest.fixture(autouse=True)
+def configure_page(page):
     page.set_default_timeout(10000)
     page.set_default_navigation_timeout(15000)
-    yield page
-    context.close()
+    return page

@@ -28,7 +28,14 @@ jobs:
           pip install -r requirements.txt
 
       - name: Install Playwright browsers
+        env:
+          TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+          TEST_USER_NAME: ${{ secrets.TEST_USER_NAME }}
+          BASE_URL: ${{ secrets.BASE_URL }}
+
         run: |
+          
           python -m playwright install --with-deps
 
       - name: Run tests
@@ -38,7 +45,7 @@ jobs:
             --alluredir=allure-results-${{ matrix.browser }}
 
       - name: Upload allure results for each browser
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results-${{ matrix.browser }}
           path: allure-results-${{ matrix.browser }}
@@ -54,7 +61,7 @@ jobs:
           fetch-depth: 0
 
       - name: Download all results
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: reports_raw
 
@@ -73,8 +80,8 @@ jobs:
 
       - name: Deploy report to Github Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v2
+        uses: peaceiris/actions-gh-pages@v3
         env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_TOKEN: ${{ secrets.GH_PAT }}
           PUBLISH_BRANCH: test-results
           PUBLISH_DIR: allure-history

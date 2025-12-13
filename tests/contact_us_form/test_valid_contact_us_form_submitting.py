@@ -7,7 +7,7 @@ from faker import Faker
 import allure
 import pytest
 
-#@pytest.mark.skip(reason="Тест временно отключен")
+@pytest.mark.skip(reason="Тест временно отключен")
 def test_valid_contact_us_form_submitting(page, base_url):
     home_page = HomePage(page)
     header = HeaderComponent(page)

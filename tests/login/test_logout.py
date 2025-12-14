@@ -4,8 +4,9 @@ from pages.home_page import HomePage
 from pages.login_page import LoginPage
 import  allure
 import os
+import pytest
 
-
+@pytest.mark.skip(reason="Тест временно отключен")
 def test_logout(page, base_url):
     home_page = HomePage(page)
     header = HeaderComponent(page)

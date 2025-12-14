@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: [chromium, webkit]
+        browser: [chromium, webkit, firefox]
 
     steps:
       - name: Checkout

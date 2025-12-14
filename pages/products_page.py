@@ -15,10 +15,11 @@ class ProductsPage(BasePage):
         count = self.products_list.count()
         idx = random.randint(0, count - 1)
         product = self.products_list.nth(idx)
+        product.scroll_into_view_if_needed()
         price = int(product.locator("h2").first.inner_text().split()[1])
         name = product.locator("p").first.inner_text()
-        product.hover()
-        product.locator(".add-to-cart").first.click()
+        product.scroll_into_view_if_needed()
+        product.locator(".productinfo .add-to-cart").click()
         self.continue_shopping_btn.wait_for(state="visible", timeout=10000)
         self.continue_shopping_btn.click()
         return {"product_price": price, "product_name": name}

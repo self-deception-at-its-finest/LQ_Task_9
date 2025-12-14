@@ -7,7 +7,7 @@ import os
 import pytest
 
 
-@pytest.mark.smoke
+
 def test_login_with_valid_credentials(page, base_url):
     home_page = HomePage(page)
     header = HeaderComponent(page)

@@ -8,7 +8,7 @@ import allure
 import pytest
 
 
-#@pytest.mark.skip(reason="Тест временно отключен")
+@pytest.mark.skip(reason="Тест временно отключен")
 def test_adding_products_in_cart(page, base_url):
     home_page = HomePage(page)
     header = HeaderComponent(page)

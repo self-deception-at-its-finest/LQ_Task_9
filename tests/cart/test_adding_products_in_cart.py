@@ -31,7 +31,7 @@ def test_adding_products_in_cart(page, base_url):
         i = random.randint(2,10)
         while i > 0:
             result = products_page.add_random_product_in_cart()
-            product_name = result["product_name"].replace('\xa0', '')
+            product_name = result["product_name"].replace('\xa0', ' ')
             if product_name in list_of_added_products:
                 continue
             list_of_added_products.append(product_name)

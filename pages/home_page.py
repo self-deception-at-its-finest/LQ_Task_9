@@ -10,7 +10,7 @@ class HomePage(BasePage):
         super().__init__(page)
         self.header_component = HeaderComponent(page)
         self.slider = page.locator("#slider")
-        self.practice_website_label = page.get_by_role("heading", name="Full-Fledged practice website")
+        self.practice_website_label = page.get_by_role("heading", name="Full-Fledged practice website").first
 
     def verify_home_page_visible(self):
         expect(self.page).to_have_title("Automation Exercise", timeout=10000)

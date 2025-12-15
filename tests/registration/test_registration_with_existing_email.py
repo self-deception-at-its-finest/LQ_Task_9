@@ -1,5 +1,4 @@
 import os
-
 from playwright.sync_api import expect
 from pages.header_component import HeaderComponent
 from pages.home_page import HomePage

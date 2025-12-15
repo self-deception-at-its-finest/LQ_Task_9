@@ -34,6 +34,5 @@ def test_subscription(page, base_url):
         take_screenshot(page)
 
     with allure.step("Verify success message 'You have been successfully subscribed!' is visible"):
-        footer.successful_subscription_msg.wait_for(state="visible", timeout=10000)
         expect(footer.successful_subscription_msg).to_have_text("You have been successfully subscribed!")
         take_screenshot(page)
